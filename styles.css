@@ -15,3 +15,29 @@
 .social-contact-button:hover{transform:translateY(-2px);box-shadow:0 6px 22px #08325b30}
 @media(max-width:1100px) and (min-width:761px){.social-contact{right:12px}.social-contact-button{width:48px;height:48px}.social-contact-button .icon,.social-contact-button>svg{width:25px;height:25px}}
 @media(max-width:760px){.social-contact{top:auto;bottom:86px;left:auto;right:16px;transform:none;flex-direction:column;gap:10px}.social-contact-button{width:44px;height:44px}.social-contact-button .icon,.social-contact-button>svg{width:24px;height:24px}.help-toggle{width:48px;height:48px;justify-content:center;padding:0}.help-toggle>span{display:none}}
+
+/* Fondos diferenciados y muelas ambientales, siempre detrás del contenido. */
+:root{--surface-blue:#d9eaff;--surface-turquoise:#cdf1eb;--surface-neutral:#e7edf4;--ambient-teeth:url('assets/muelas-ambiente.svg')}
+.hero{background:linear-gradient(120deg,#cfe5ff 0%,#e2f2ff 48%,#bfece6 100%)}
+.clinic-section{background:var(--white)}
+.care-section{background:var(--surface-blue)}
+.radiology-section{background:var(--surface-turquoise)}
+.steps-section{background:#d1e4fa}
+.faq-section{background:var(--surface-neutral)}
+.site-footer{background:#deedf8}
+.hero,.clinic-section,.care-section,.radiology-section,.steps-section,.faq-section,.contact-section,.site-footer{position:relative;isolation:isolate}
+.hero::before,.clinic-section::before,.care-section::before,.radiology-section::before,.steps-section::before,.faq-section::before,.contact-section::before,.site-footer::before{content:'';position:absolute;inset:0;z-index:-1;background-image:var(--ambient-teeth);background-size:840px 680px;background-repeat:repeat;opacity:.18;pointer-events:none}
+.clinic-section::before{background-position:-90px -140px;opacity:.12}
+.care-section::before{background-position:160px -35px}
+.radiology-section::before{background-position:-220px -110px;opacity:.15}
+.steps-section::before{background-position:70px -180px}
+.faq-section::before{background-position:-140px -70px;opacity:.13}
+.contact-section::before{filter:brightness(0) invert(1);background-position:200px -50px;opacity:.13}
+.site-footer::before{background-position:-60px -150px;opacity:.12}
+.care-section,.radiology-section,.steps-section,.faq-section,.site-footer{border-top:1px solid #a9c7de}
+.hero-bottom{border-top-color:#9ec4d9}
+.hero-visual::before{background:#a5e5dd}
+.steps-grid li{border-top-color:#8eb5ce}
+.faq-list details{border-bottom-color:#b0c3d5}
+.faq-list details:first-child{border-top-color:#b0c3d5}
+@media(max-width:760px){.hero::before,.clinic-section::before,.care-section::before,.radiology-section::before,.steps-section::before,.faq-section::before,.contact-section::before,.site-footer::before{background-size:520px 460px;opacity:.13}.clinic-section::before,.faq-section::before{opacity:.10}.contact-section::before{opacity:.15}}

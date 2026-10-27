@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="680" viewBox="0 0 840 680" fill="none">
+  <defs>
+    <g id="molar" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 10c-5-5-16-6-18 5-2 9 5 27 9 27 4 0 3-15 9-15s5 15 9 15c4 0 11-18 9-27-2-11-13-10-18-5Z"/>
+      <path d="M17 10c3 4 7 6 13 5"/>
+    </g>
+  </defs>
+  <use href="#molar" stroke="#0277dc" transform="translate(32 45) rotate(-20 36 36) scale(1.5)"/>
+  <use href="#molar" stroke="#008f87" transform="translate(660 100) rotate(18 28 28) scale(1.1)"/>
+  <use href="#molar" stroke="#0277dc" transform="translate(395 288) rotate(-12 24 24) scale(.9)"/>
+  <use href="#molar" stroke="#008f87" transform="translate(740 450) rotate(26 42 42) scale(1.8)"/>
+  <use href="#molar" stroke="#0277dc" transform="translate(150 545) rotate(15 28 28) scale(1.15)"/>
+</svg>
