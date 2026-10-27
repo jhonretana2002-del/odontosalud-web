@@ -104,6 +104,9 @@ function initCareCarousel() {
     slide.addEventListener('focusin', () => activateSlide(slide));
     slide.addEventListener('click', () => activateSlide(slide));
   });
+  viewport.addEventListener('pointerleave', event => {
+    if (event.pointerType !== 'touch') activateSlide(null);
+  });
 
   controls.hidden = false;
   const moveWithControl = move => {
