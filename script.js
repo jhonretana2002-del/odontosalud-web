@@ -94,11 +94,15 @@ function initCareCarousel() {
   const motion = carousel.plugins().autoScroll;
   let manuallyPaused = false;
 
+  const activateSlide = activeSlide => {
+    slides.forEach(slide => slide.classList.toggle('is-selected', slide === activeSlide));
+  };
+
   slides.forEach(slide => {
     slide.tabIndex = 0;
-    const selectSlide = () => slides.forEach(item => item.classList.toggle('is-selected', item === slide));
-    slide.addEventListener('focusin', selectSlide);
-    slide.addEventListener('click', selectSlide);
+    slide.addEventListener('pointerenter', () => activateSlide(slide));
+    slide.addEventListener('focusin', () => activateSlide(slide));
+    slide.addEventListener('click', () => activateSlide(slide));
   });
 
   controls.hidden = false;

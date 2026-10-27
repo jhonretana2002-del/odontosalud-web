@@ -75,7 +75,7 @@
 
 /* Galería fotográfica del local: conserva Embla, Auto Scroll, flechas, pausa y gesto táctil. */
 .care-section .care-image{aspect-ratio:16/10;object-fit:cover;object-position:center;background:var(--surface-blue)}
-.care-section .care-slide:nth-child(4) .care-image{aspect-ratio:4/3;object-position:center 28%}
+.care-section .care-slide:nth-child(4) .care-image{object-position:center 28%}
 .care-section .care-carousel .care-card{min-height:580px}
 .care-section .care-card-content{padding-bottom:32px}
 .care-section .care-card-content h3{min-height:2.2em}
@@ -85,7 +85,6 @@
 .care-slide.is-selected .care-card-content .number,.care-slide.is-selected .care-card-content h3,.care-slide.is-selected .care-card-content>p{color:var(--white)}
 .care-slide.is-selected .care-card-content .service-icon{stroke:var(--turquoise)}
 .care-slide:focus-visible{outline:3px solid var(--blue-accessible);outline-offset:4px;border-radius:calc(var(--radius) + 2px)}
-@media(hover:hover){.care-slide:hover .care-card{background:var(--blue-accessible);border-color:var(--blue);box-shadow:0 12px 28px #0277dc30;color:var(--white)}.care-slide:hover .care-card-content .number,.care-slide:hover .care-card-content h3,.care-slide:hover .care-card-content>p{color:var(--white)}.care-slide:hover .care-card-content .service-icon{stroke:var(--turquoise)}}
 
 /* Panel interactivo de especialidades y servicios publicados. */
 .specialties-section{position:relative;isolation:isolate;background:var(--white)}
