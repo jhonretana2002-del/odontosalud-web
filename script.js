@@ -92,15 +92,22 @@ function initCareCarousel() {
   const carousel = EmblaCarousel(viewport, { loop: true, align: 'start', dragFree: true }, [autoScroll]);
   const motion = carousel.plugins().autoScroll;
   let manuallyPaused = false;
-  let sectionVisible = !('IntersectionObserver' in window);
 
   controls.hidden = false;
-  section.querySelector('.care-prev').addEventListener('click', () => carousel.scrollPrev());
-  section.querySelector('.care-next').addEventListener('click', () => carousel.scrollNext());
+  const moveWithControl = move => {
+    const resumeAfterMove = !manuallyPaused && !reducedMotion.matches && !document.hidden;
+    motion.stop();
+    window.requestAnimationFrame(() => {
+      move();
+      if (resumeAfterMove) motion.play(1400);
+    });
+  };
+  section.querySelector('.care-prev').addEventListener('click', () => moveWithControl(() => carousel.scrollPrev()));
+  section.querySelector('.care-next').addEventListener('click', () => moveWithControl(() => carousel.scrollNext()));
 
   const syncMotion = () => {
     pauseButton.hidden = reducedMotion.matches;
-    if (manuallyPaused || reducedMotion.matches || document.hidden || !sectionVisible) motion.stop();
+    if (manuallyPaused || reducedMotion.matches || document.hidden) motion.stop();
     else motion.play();
     pauseButton.setAttribute('aria-pressed', String(manuallyPaused));
     pauseButton.setAttribute('aria-label', (manuallyPaused ? 'Reanudar' : 'Pausar') + ' recorrido de información');
@@ -109,28 +116,14 @@ function initCareCarousel() {
 
   pauseButton.addEventListener('click', () => {
     manuallyPaused = !manuallyPaused;
-    if (manuallyPaused) {
-      motion.stop();
-      carousel.scrollTo(carousel.selectedScrollSnap(), true);
-    } else if (!reducedMotion.matches && !document.hidden && sectionVisible) {
-      motion.play(0);
-    }
     syncMotion();
   });
   carousel.on('autoScroll:play', () => {
-    if (manuallyPaused || reducedMotion.matches || document.hidden || !sectionVisible) motion.stop();
+    if (manuallyPaused || reducedMotion.matches || document.hidden) motion.stop();
   });
   document.addEventListener('visibilitychange', syncMotion);
   reducedMotion.addEventListener('change', syncMotion);
   syncMotion();
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      sectionVisible = entries[0].isIntersecting;
-      syncMotion();
-    }, { threshold: 0.2 });
-    observer.observe(section);
-  }
 }
 
 initCareCarousel();
