@@ -14,4 +14,4 @@
 .social-whatsapp{color:#128c45}.social-instagram{color:#c13584}.social-facebook{color:#1877f2}
 .social-contact-button:hover{transform:translateY(-2px);box-shadow:0 6px 22px #08325b30}
 @media(max-width:1100px) and (min-width:761px){.social-contact{right:12px}.social-contact-button{width:48px;height:48px}.social-contact-button .icon,.social-contact-button>svg{width:25px;height:25px}}
-@media(max-width:760px){.social-contact{top:auto;bottom:16px;left:16px;right:auto;transform:none;flex-direction:row;gap:8px}.social-contact-button{width:44px;height:44px}.social-contact-button .icon,.social-contact-button>svg{width:24px;height:24px}.help-toggle{width:48px;height:48px;justify-content:center;padding:0}.help-toggle>span{display:none}}
+@media(max-width:760px){.social-contact{top:auto;bottom:86px;left:auto;right:16px;transform:none;flex-direction:column;gap:10px}.social-contact-button{width:44px;height:44px}.social-contact-button .icon,.social-contact-button>svg{width:24px;height:24px}.help-toggle{width:48px;height:48px;justify-content:center;padding:0}.help-toggle>span{display:none}}
