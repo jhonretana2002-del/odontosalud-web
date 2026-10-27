@@ -71,3 +71,66 @@ topicButtons.forEach(button => button.addEventListener('click', () => {
   contact.href = 'https://wa.me/50688445279?text=' + encodeURIComponent(topic.message);
   contact.firstChild.textContent = topic.label + ' ';
 }));
+
+function initCareCarousel() {
+  const section = document.querySelector('.care-carousel');
+  if (!section || typeof EmblaCarousel !== 'function' || typeof EmblaCarouselAutoScroll !== 'function') return;
+
+  const viewport = section.querySelector('.care-viewport');
+  const controls = section.querySelector('.care-controls');
+  const pauseButton = section.querySelector('.care-pause');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const autoScroll = EmblaCarouselAutoScroll({
+    speed: 0.65,
+    startDelay: 1200,
+    direction: 'forward',
+    playOnInit: false,
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+    stopOnFocusIn: true
+  });
+  const carousel = EmblaCarousel(viewport, { loop: true, align: 'start', dragFree: true }, [autoScroll]);
+  const motion = carousel.plugins().autoScroll;
+  let manuallyPaused = false;
+  let sectionVisible = !('IntersectionObserver' in window);
+
+  controls.hidden = false;
+  section.querySelector('.care-prev').addEventListener('click', () => carousel.scrollPrev());
+  section.querySelector('.care-next').addEventListener('click', () => carousel.scrollNext());
+
+  const syncMotion = () => {
+    pauseButton.hidden = reducedMotion.matches;
+    if (manuallyPaused || reducedMotion.matches || document.hidden || !sectionVisible) motion.stop();
+    else motion.play();
+    pauseButton.setAttribute('aria-pressed', String(manuallyPaused));
+    pauseButton.setAttribute('aria-label', (manuallyPaused ? 'Reanudar' : 'Pausar') + ' recorrido de información');
+    pauseButton.innerHTML = manuallyPaused ? 'REANUDAR <span aria-hidden="true">▶</span>' : 'PAUSAR <span aria-hidden="true">Ⅱ</span>';
+  };
+
+  pauseButton.addEventListener('click', () => {
+    manuallyPaused = !manuallyPaused;
+    if (manuallyPaused) {
+      motion.stop();
+      carousel.scrollTo(carousel.selectedScrollSnap(), true);
+    } else if (!reducedMotion.matches && !document.hidden && sectionVisible) {
+      motion.play(0);
+    }
+    syncMotion();
+  });
+  carousel.on('autoScroll:play', () => {
+    if (manuallyPaused || reducedMotion.matches || document.hidden || !sectionVisible) motion.stop();
+  });
+  document.addEventListener('visibilitychange', syncMotion);
+  reducedMotion.addEventListener('change', syncMotion);
+  syncMotion();
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      sectionVisible = entries[0].isIntersecting;
+      syncMotion();
+    }, { threshold: 0.2 });
+    observer.observe(section);
+  }
+}
+
+initCareCarousel();

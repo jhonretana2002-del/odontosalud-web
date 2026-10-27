@@ -41,3 +41,34 @@
 .faq-list details{border-bottom-color:#b0c3d5}
 .faq-list details:first-child{border-top-color:#b0c3d5}
 @media(max-width:760px){.hero::before,.clinic-section::before,.care-section::before,.radiology-section::before,.steps-section::before,.faq-section::before,.contact-section::before,.site-footer::before{background-size:520px 460px;opacity:.13}.clinic-section::before,.faq-section::before{opacity:.10}.contact-section::before{opacity:.15}}
+
+/* Carrusel de atención, adaptado del recorrido original de especialidades. */
+.care-carousel{overflow:hidden}
+.care-viewport{overflow:hidden;touch-action:pan-y pinch-zoom}
+.care-track{display:flex;gap:20px;touch-action:pan-y pinch-zoom;cursor:grab}
+.care-track:active{cursor:grabbing}
+.care-slide{flex:0 0 clamp(300px,31vw,370px);min-width:0}
+.care-carousel .care-card{height:100%;min-height:570px;padding:0;display:flex;flex-direction:column;overflow:hidden;gap:0}
+.care-image{width:100%;aspect-ratio:720/420;object-fit:cover;background:#d9eaff;user-select:none;-webkit-user-drag:none}
+.care-card-content{padding:27px 30px 29px;display:flex;flex:1;flex-direction:column;align-items:flex-start}
+.care-card-content .card-heading{width:100%;margin-bottom:19px}
+.care-card-content .service-icon{width:48px;height:48px}
+.care-card-content h3{font-size:27px;min-height:2.1em;margin:0 0 13px}
+.care-card-content>p{font-size:14px;line-height:1.75;margin:0 0 20px}
+.care-card-blue .care-card-content>p{color:#edf7ff}
+.care-card-content .text-link{margin-top:auto;font-size:13px;gap:9px}
+.care-carousel-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px;border-bottom:1px solid #8eb5ce}
+.care-carousel-count{font-size:10px;font-weight:800;letter-spacing:.13em;color:var(--navy)}
+.care-carousel-count span{font-size:16px;color:var(--blue-accessible);margin-left:7px}
+.care-controls{display:flex;align-items:center;gap:8px;padding-right:70px}
+.care-controls[hidden],.care-pause[hidden]{display:none}
+.care-arrow,.care-pause{height:42px;border:1px solid #86a9c5;background:var(--white);color:var(--navy);transition:background .2s,color .2s,border-color .2s}
+.care-arrow{width:42px;border-radius:50%;font-size:21px;line-height:1}
+.care-arrow:hover,.care-pause:hover{background:var(--blue-accessible);border-color:var(--blue-accessible);color:var(--white)}
+.care-pause{min-width:120px;padding:0 15px;margin-left:8px;border-radius:999px;font-size:11px;font-weight:800}
+.care-pause span{margin-left:7px}
+.care-arrow:focus-visible,.care-pause:focus-visible{outline:3px solid var(--blue-accessible);outline-offset:3px}
+.care-carousel-hint{margin:12px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
+@media(max-width:760px){.care-slide{flex-basis:min(86vw,350px)}.care-carousel .care-card{min-height:540px}.care-image{aspect-ratio:720/420}.care-card-content{padding:23px 24px 25px}.care-card-content .card-heading{margin-bottom:15px}.care-card-content h3{font-size:25px}.care-carousel-footer{align-items:flex-start;flex-direction:column;gap:12px;padding-block:16px}.care-controls{width:100%;justify-content:flex-start;padding-right:58px}.care-pause{margin-left:auto}.care-carousel-hint{font-size:10px}}
+@media(max-width:360px){.care-slide{flex-basis:calc(100vw - 50px)}.care-carousel .care-card{min-height:520px}.care-card-content{padding:21px 20px}.care-carousel-count{font-size:9px}.care-pause{min-width:116px;padding-inline:12px}}
+@media(prefers-reduced-motion:reduce){.care-track{cursor:auto}}
