@@ -72,3 +72,38 @@
 @media(max-width:760px){.care-slide{flex-basis:min(86vw,350px)}.care-carousel .care-card{min-height:540px}.care-image{aspect-ratio:720/420}.care-card-content{padding:23px 24px 25px}.care-card-content .card-heading{margin-bottom:15px}.care-card-content h3{font-size:25px}.care-carousel-footer{align-items:flex-start;flex-direction:column;gap:12px;padding-block:16px}.care-controls{width:100%;justify-content:flex-start;padding-right:58px}.care-pause{margin-left:auto}.care-carousel-hint{font-size:10px}}
 @media(max-width:360px){.care-slide{flex-basis:calc(100vw - 50px)}.care-carousel .care-card{min-height:520px}.care-card-content{padding:21px 20px}.care-carousel-count{font-size:9px}.care-pause{min-width:116px;padding-inline:12px}}
 @media(prefers-reduced-motion:reduce){.care-track{cursor:auto}}
+
+/* Galería fotográfica del local: conserva Embla, Auto Scroll, flechas, pausa y gesto táctil. */
+.care-section .care-image{aspect-ratio:16/10;object-fit:cover;object-position:center;background:var(--surface-blue)}
+.care-section .care-slide:nth-child(4) .care-image{aspect-ratio:4/3;object-position:center 28%}
+.care-section .care-carousel .care-card{min-height:580px}
+.care-section .care-card-content{padding-bottom:32px}
+.care-section .care-card-content h3{min-height:2.2em}
+.care-section .care-card-content>p{margin-bottom:0}
+
+/* Panel interactivo de especialidades y servicios publicados. */
+.specialties-section{position:relative;isolation:isolate;background:var(--white)}
+.specialties-section::before{content:'';position:absolute;inset:0;z-index:-1;background-image:var(--ambient-teeth);background-size:840px 680px;background-position:130px -85px;opacity:.14;pointer-events:none}
+.specialties-intro{max-width:820px;margin:-12px 0 30px;color:var(--muted);font-size:15px;line-height:1.8}
+.specialty-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.specialty-card{min-width:0;align-self:start;background:#fff;border:1px solid #b9d2e2;border-radius:14px;box-shadow:0 4px 15px #08325b08;transition:border-color .22s,box-shadow .22s,transform .22s,background .22s}
+.specialty-card:hover,.specialty-card:focus-within,.specialty-card[open]{border-color:var(--blue-accessible);background:#f4fbff;box-shadow:0 12px 30px #08325b18;transform:translateY(-3px)}
+.specialty-card summary{display:grid;grid-template-columns:38px 1fr 24px;align-items:center;gap:12px;min-height:88px;padding:18px 20px;list-style:none;cursor:pointer}
+.specialty-card summary::-webkit-details-marker{display:none}
+.specialty-card summary:focus-visible{outline:3px solid var(--blue-accessible);outline-offset:3px;border-radius:12px}
+.specialty-index{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#d9eaff;color:var(--blue-accessible);font-size:12px;font-weight:800}
+.specialty-title{color:var(--navy);font-size:16px;font-weight:800;line-height:1.35}
+.specialty-mark{display:grid;place-items:center;width:24px;height:24px;color:var(--blue-accessible);font-size:22px;transition:transform .2s}
+.specialty-card[open] .specialty-mark{transform:rotate(45deg)}
+.specialty-card:hover .specialty-mark,.specialty-card:focus-within .specialty-mark{color:#00867d}
+.specialty-detail{max-height:0;overflow:hidden;opacity:0;padding:0 20px;transition:max-height .25s ease,opacity .2s ease,padding .2s ease}
+.specialty-card:hover .specialty-detail,.specialty-card:focus-within .specialty-detail,.specialty-card[open] .specialty-detail{max-height:210px;opacity:1;padding:0 20px 20px}
+.specialty-detail p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.65}
+.source-tag{display:inline-block;padding:6px 9px;border-radius:5px;background:#d9eaff;color:#00549f;font-size:9px;font-weight:800;letter-spacing:.045em;line-height:1.4}
+.specialties-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px;padding:22px 25px;border-radius:12px;background:#d1e4fa}
+.specialties-cta p{margin:0;color:var(--navy);font-size:16px;font-weight:800}
+.specialties-cta .button{min-height:48px;padding:12px 18px}
+@media(max-width:950px){.specialty-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.specialties-section::before{background-size:520px 460px;opacity:.11}.care-section .care-carousel .care-card{min-height:545px}.care-section .care-card-content{padding:23px 24px 27px}.care-section .care-card-content h3{font-size:25px}.specialties-intro{font-size:14px;margin:0 0 24px}.specialty-grid{grid-template-columns:1fr;gap:12px}.specialty-card summary{min-height:76px;padding:15px 17px}.specialty-title{font-size:15px}.specialty-detail p{font-size:13px}.specialties-cta{align-items:flex-start;flex-direction:column;gap:16px;padding:20px}.specialties-cta .button{width:100%}}
+@media(max-width:360px){.care-section .care-carousel .care-card{min-height:530px}.specialty-card summary{grid-template-columns:34px 1fr 20px;gap:10px;padding:14px}.specialty-index{width:32px;height:32px}.specialty-title{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.specialty-card,.specialty-mark,.specialty-detail{transition:none!important}.specialty-card:hover,.specialty-card:focus-within,.specialty-card[open]{transform:none}}

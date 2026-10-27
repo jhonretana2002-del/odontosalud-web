@@ -110,7 +110,7 @@ function initCareCarousel() {
     if (manuallyPaused || reducedMotion.matches || document.hidden) motion.stop();
     else motion.play();
     pauseButton.setAttribute('aria-pressed', String(manuallyPaused));
-    pauseButton.setAttribute('aria-label', (manuallyPaused ? 'Reanudar' : 'Pausar') + ' recorrido de información');
+    pauseButton.setAttribute('aria-label', (manuallyPaused ? 'Reanudar' : 'Pausar') + ' recorrido de las instalaciones');
     pauseButton.innerHTML = manuallyPaused ? 'REANUDAR <span aria-hidden="true">▶</span>' : 'PAUSAR <span aria-hidden="true">Ⅱ</span>';
   };
 
