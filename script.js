@@ -77,6 +77,7 @@ function initCareCarousel() {
   if (!section || typeof EmblaCarousel !== 'function' || typeof EmblaCarouselAutoScroll !== 'function') return;
 
   const viewport = section.querySelector('.care-viewport');
+  const slides = [...section.querySelectorAll('.care-slide')];
   const controls = section.querySelector('.care-controls');
   const pauseButton = section.querySelector('.care-pause');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -92,6 +93,13 @@ function initCareCarousel() {
   const carousel = EmblaCarousel(viewport, { loop: true, align: 'start', dragFree: true }, [autoScroll]);
   const motion = carousel.plugins().autoScroll;
   let manuallyPaused = false;
+
+  slides.forEach(slide => {
+    slide.tabIndex = 0;
+    const selectSlide = () => slides.forEach(item => item.classList.toggle('is-selected', item === slide));
+    slide.addEventListener('focusin', selectSlide);
+    slide.addEventListener('click', selectSlide);
+  });
 
   controls.hidden = false;
   const moveWithControl = move => {
