@@ -100,12 +100,19 @@ function initCareCarousel() {
 
   slides.forEach(slide => {
     slide.tabIndex = 0;
-    slide.addEventListener('pointerenter', () => activateSlide(slide));
-    slide.addEventListener('focusin', () => activateSlide(slide));
-    slide.addEventListener('click', () => activateSlide(slide));
+    slide.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'touch') return;
+      activateSlide(null);
+      if (slides.includes(document.activeElement)) document.activeElement.blur();
+    });
+    slide.addEventListener('pointerup', event => {
+      if (event.pointerType === 'touch') activateSlide(slide);
+    });
   });
-  viewport.addEventListener('pointerleave', event => {
-    if (event.pointerType !== 'touch') activateSlide(null);
+  document.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch' || event.target.closest?.('.care-slide')) return;
+    activateSlide(null);
+    if (slides.includes(document.activeElement)) document.activeElement.blur();
   });
 
   controls.hidden = false;
