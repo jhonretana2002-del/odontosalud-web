@@ -42,6 +42,7 @@ if (heroVideo && heroVideoToggle) {
   heroVideo.addEventListener('pause', updateHeroVideoControl);
   document.addEventListener('visibilitychange', syncHeroVideo);
   reducedMotion.addEventListener('change', syncHeroVideo);
+  updateHeroVideoControl();
   syncHeroVideo();
 }
 
