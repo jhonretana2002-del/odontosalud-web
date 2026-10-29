@@ -51,6 +51,11 @@
   .hero-bottom>span:not(:first-child){display:none}
 }
 @media(max-width:390px){.hero h1{font-size:clamp(43px,11.5vw,52px)}.hero-actions .button-blue{padding-inline:17px;font-size:12px}.hero-actions .text-link{font-size:12px}.hero-note{font-size:11px}}
+
+/* Titular más sobrio: tipografía de sistema y sin el trazo decorativo bajo la palabra destacada. */
+.hero h1{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:700;letter-spacing:-.045em}
+.hero h1>span{position:static;display:inline;color:#aaf4e8;z-index:auto}
+.hero h1>span::after{content:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}.button:hover{transform:none}}
 
 /* Accesos persistentes, inspirados en la referencia del usuario. */
